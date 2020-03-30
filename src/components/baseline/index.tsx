@@ -23,6 +23,10 @@ interface Props {
    */
   top?: number;
   /**
+   * 用来设置baseline的下边距
+   */
+  bottom?: number;
+  /**
    * 用来设置baseline的样式，solid为实线，dashed为虚线
    */
   type?: "solid" | "dashed";
@@ -34,6 +38,7 @@ export const BaseLine: React.FC<Props> = React.memo(props => {
     color = "#EEEEEE",
     height = 2,
     top = 0,
+    bottom,
     type = "solid"
   } = props;
   let justifyContent;
@@ -55,6 +60,7 @@ export const BaseLine: React.FC<Props> = React.memo(props => {
     display: "flex",
     justifyContent,
     marginTop: px2vw(top),
+    marginBottom: bottom && px2vw(bottom),
     width: "100%"
   };
   const line = {

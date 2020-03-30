@@ -6,6 +6,7 @@ interface Props {
   bottom?: number;
   right?: number;
   height?: number;
+  lineHeight?: number;
   showBorder?: boolean;
   textAlign?: "right" | "left" | "center";
   /**
@@ -51,9 +52,9 @@ interface Props {
 }
 
 const ContainerFeed = styled.div.attrs({
-  onClick: (props:any) => props.onClick || null
+  onClick: (props: any) => props.onClick || null
 })`
-  margin-top: ${({ top }:Props) => top && px2vw(top)};
+  margin-top: ${({ top }: Props) => top && px2vw(top)};
   margin-bottom: ${({ bottom }) => bottom && px2vw(bottom)};
   margin-left: ${({ left }) => left && px2vw(left)};
   margin-right: ${({ right }) => right && px2vw(right)};
@@ -66,7 +67,15 @@ const ContainerFeed = styled.div.attrs({
   border: ${({ showBorder }) => showBorder && "1px solid yellow"};
   -webkit-line-clamp: ${({ lineNum }) => lineNum || null};
   display: ${({ lineNum }) => (lineNum ? "-webkit-box" : "inline-block")};
-  line-height: ${({ height }) => height && px2vw(height)};
+  line-height: ${({ height, lineHeight }) => {
+    if (!height&&!lineHeight) {
+      return undefined;
+    } else if (height && !lineHeight) {
+      return px2vw(height);
+    } else if (lineHeight) {
+      return px2vw(lineHeight);
+    }
+  }};
   height: ${({ height }) => height && px2vw(height)};
   word-break: break-all;
   text-overflow: ellipsis;

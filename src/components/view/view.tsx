@@ -148,12 +148,12 @@ export const View: React.FC<Props> = React.memo(props => {
     borderTop,
     borderBottom,
     background,
-    showBorder = false
+    showBorder
   } = props;
   const justifyContent = getAlign(align);
   const alignItems = getAlign(alignItem);
   const styled: React.CSSProperties = {
-    border: showBorder ? "1px solid green" : undefined,
+    position: "relative",
     flexDirection: direction,
     height: height ? px2vw(height) : "100%",
     marginTop: px2vw(top),
@@ -168,18 +168,34 @@ export const View: React.FC<Props> = React.memo(props => {
     paddingLeft: px2vw(paddingLeft),
     paddingRight: px2vw(paddingRight),
     paddingTop: px2vw(paddingTop),
-    borderBottom:
-      borderBottom && `${borderColor} ${px2vw(borderBottom)} ${borderType}`,
-    borderTop: borderTop && `${borderColor} ${px2vw(borderTop)} ${borderType}`,
-    borderLeft:
-      borderLeft && `${borderColor} ${px2vw(borderLeft)} ${borderType}`,
-    borderRight:
-      borderRight && `${borderColor} ${px2vw(borderRight)} ${borderType}`,
+
+    borderBottom: borderBottom
+      ? `${borderColor} ${px2vw(borderBottom)} ${borderType}`
+      : undefined,
+    borderTop: borderTop
+      ? `${borderColor} ${px2vw(borderTop)} ${borderType}`
+      : undefined,
+    borderLeft: borderLeft
+      ? `${borderColor} ${px2vw(borderLeft)} ${borderType}`
+      : undefined,
+    borderRight: borderRight
+      ? `${borderColor} ${px2vw(borderRight)} ${borderType}`
+      : undefined,
     background: background ? background : undefined
+    // border: showBorder ? `1px solid green` : undefined
+  };
+  const styleBoder: React.CSSProperties = {
+    position: "absolute",
+    border: showBorder ? `1px solid green` : undefined,
+    width: `100%`,
+    height: `100%`,
+    top: 0,
+    left: 0
   };
   return (
     <div style={styled} className={styles.body} onClick={onClick}>
       {children}
+      {showBorder?<div style={styleBoder}></div>:null}
     </div>
   );
 });
