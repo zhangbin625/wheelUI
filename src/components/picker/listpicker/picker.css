@@ -1,0 +1,37 @@
+.prd{
+    display: flex;
+    height: 435px;
+}
+.prd .am-picker-col-indicator {
+    top: 150px !important;
+    height: 90px;
+}
+
+.prd .am-picker-col-content{
+    padding: 0 !important;
+    top: 150px !important;
+}
+
+.prd .am-picker-col{
+    height: 430px ;
+}
+
+.prd .am-picker-col-mask{
+    background-image: none !important;
+   
+}
+
+.prd .am-picker-col-item-selected{
+    color: #000000 !important;
+    font-weight: bold;
+}
+.prd .am-picker-col-indicator {
+    background: rgba(230,233,239,.3) !important;
+    opacity:none !important;
+}
+.prd .am-picker-col-item {
+    font-size: 28px;
+    height: 90px;
+    line-height: 90px;
+    color: rgba(0,0,0,0.5);
+}

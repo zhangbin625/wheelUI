@@ -1,0 +1,56 @@
+ .am-tabs-default-bar-tab.am-tabs-default-bar-tab-active{
+    font-size: 32px;
+    color: rgba(29,31,43,1);
+    font-weight: bold;
+}
+ .am-tabs-default-bar-tab{
+    font-size: 28px;
+    color: rgba(29,31,43,1);
+}
+ .am-tabs-default-bar-underline{
+    border:3px solid #2D3D70;
+    margin-top: 20px;
+    top: 44px;
+    display: none;
+}
+.am-tabs-default-bar-content{
+    height: 45px !important;
+    content: "" !important; 
+}
+
+ .tab-phane-body{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: hidden;
+}
+.am-tabs-default-bar{
+    align-items: center;
+}
+.am-tabs-tab-bar-wrap{
+    height: 90px;
+}
+
+html:not([data-scale]) .am-tabs-default-bar-top .am-tabs-default-bar-tab:after{
+    bottom: -20px;
+    content: '';
+}
+
+.tab-title-header{
+    position: relative;
+}
+.am-tabs-default-bar-tab.am-tabs-default-bar-tab-active .tab-title-header-bar::after{
+    content: "";
+    width: 100%;
+    height: 6px !important;
+    background: linear-gradient(90deg, rgba(89,109,170,1) 0%,rgba(45,61,112,1) 100%) !important;
+    position: absolute;
+    border-radius: 3px !important;
+    bottom: -20px !important;
+    border: none !important;
+    left: 0;
+}
+html:not([data-scale]) .am-tabs-default-bar-top .am-tabs-default-bar-tab:after{
+    background: none;
+}

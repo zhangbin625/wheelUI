@@ -1,0 +1,18 @@
+.body{
+    width: 240px;
+    height: 60px;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgba(87,107,167,1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.item{
+    flex: 1;
+    text-align: center;
+    line-height: 60px;
+    font-size: 28px;
+    color: #1D1F2B;
+    background-color: #FFFFFF;
+}

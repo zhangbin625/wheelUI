@@ -1,0 +1,39 @@
+.body{
+    width: 750px;
+    background: rgba(255,255,255,1);
+    border-radius: 0px 0px 40px 40px 
+}
+.buttonGroup{
+    margin-top: 10px;
+    height: 90px;
+    border-top: 1px solid #EEEEEE;
+}
+
+.left{
+    display: inline-block;
+    width: 50%;
+    line-height: 90px;
+    text-align: center;
+    height: 100%;
+    font-size: 28px;
+    background: rgba(255,255,255,1);
+    border-radius: 0px 0px 0px 40px;
+}
+.right{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 90px;
+    background: linear-gradient(126deg, rgba(83,107,157,1) 0%,rgba(57,80,132,1) 100%);
+    border-radius: 0px 0px 40px 0px;
+    font-size: 28px;
+    color: rgba(255,255,255,1);
+}
+.left:active{
+    color: rgba(0,0,0,.3);
+}
+
+.right:active{
+    color: rgba(255,255,255,.3);
+}

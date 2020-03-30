@@ -1,0 +1,16 @@
+.am-picker{
+  
+}
+.am-picker-col{
+    height: 450px;
+}
+.am-picker-col-indicator {
+    height: 90px;
+    background-color: #E6E9EF;
+    opacity: .3;
+}
+.am-picker-col-item {
+    font-size: 28px;
+    height: 90px;
+    line-height: 90px;
+}

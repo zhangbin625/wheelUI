@@ -1,0 +1,29 @@
+.default{
+    display: inline-block;
+    width: 320px;
+    height: 70px;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgba(45,61,112,1);
+    border-radius: 45px;
+    font-size: 30px;
+    color: rgba(0,0,0,1);
+    text-align: center;
+    line-height: 70px;
+}
+.default:active{
+    color: rgba(0,0,0,.3);
+}
+.primary{
+    display: inline-block;
+    width: 320px;
+    height: 70px;
+    background: linear-gradient(126deg, rgba(83,107,157,1) 0%,rgba(57,80,132,1) 100%);
+    border-radius: 45px;
+    font-size: 30px;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    line-height: 70px;
+}
+.primary:active{
+    color: rgba(255,255,255,.3);
+}

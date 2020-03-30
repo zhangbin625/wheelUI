@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { PureComponent } from "react";
+import { RouteComponentProps } from "react-router";
+import { hot } from "react-hot-loader/root";
+import "./App.css"
+interface Props {}
+interface State {}
+class App extends PureComponent<Props, State> {
+  render() {
+    const { children } = this.props;
+    return (
+      <div
+        className={`App ${
+          typeof window !== "undefined" &&
+          window &&
+          /iphone/gi.test(window.navigator.userAgent) &&
+          window.screen.height >= 812
+            ? "iPhoneX"
+            : ""
+        }`}
+      >
+        {children}
+      </div>
+    );
+  }
 }
 
-export default App;
+export default process.env.NODE_ENV === "development" ? hot(App) : App;

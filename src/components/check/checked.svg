@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>分组 11</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M16,32 C7.2,32 0,24.8 0,16 C0,7.2 7.2,0 16,0 C24.8,0 32,7.2 32,16 C32,24.8 24.8,32 16,32 Z" id="path-1"></path>
+        <filter x="-21.9%" y="-15.6%" width="143.8%" height="143.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.31372549   0 0 0 0 0.4   0 0 0 0 0.568627451  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="筛选" transform="translate(-673.000000, -921.000000)" fill-rule="nonzero">
+            <g id="分组-2" transform="translate(0.000000, 794.000000)">
+                <g id="分组-11" transform="translate(677.000000, 129.000000)">
+                    <g id="路径">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#49608F" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M26.5217391,11.4536082 C27.1594203,10.8762887 27.1594203,10.0103093 26.5217391,9.43298969 C25.884058,8.8556701 24.9275362,8.8556701 24.2898551,9.43298969 L12.173913,19.2474227 L7.71014493,14.9175258 C7.07246377,14.3402062 6.11594203,14.3402062 5.47826087,14.9175258 C4.84057971,15.4948454 4.84057971,16.3608247 5.47826087,16.9381443 L10.8985507,22.4226804 C11.2173913,22.7113402 11.5023193,23 12.0065613,23 C12.64151,23 12.9498901,22.6831055 13.3548279,22.3583984 L26.5217391,11.4536082 Z" id="形状" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

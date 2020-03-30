@@ -1,0 +1,83 @@
+.container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body{
+    width: 600px;
+    background: rgba(255,255,255,1);
+    border-radius: 40px 40px 40px 40px;
+   
+}
+.content{
+    min-height: 247px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 72px 0px 72px 0px;
+}
+.buttonGroup{
+    margin-top: 10px;
+    height: 90px;
+    border-top: 1px solid #EEEEEE;
+}
+.img{
+    width: 90px;
+    height: 90px;
+    margin-bottom: 28px;
+}
+
+.left{
+    display: inline-block;
+    width: 50%;
+    line-height: 90px;
+    text-align: center;
+    height: 100%;
+    font-size: 28px;
+    background: rgba(255,255,255,1);
+    border-radius: 0px 0px 0px 40px;
+}
+.right{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 90px;
+    background: linear-gradient(126deg, rgba(83,107,157,1) 0%,rgba(57,80,132,1) 100%);
+    border-radius: 0px 0px 40px 0px;
+    font-size: 28px;
+    color: rgba(255,255,255,1);
+}
+.left:active{
+    color: rgba(0,0,0,.3);
+}
+
+.right:active{
+    color: rgba(255,255,255,.3);
+}
+.close{
+    margin-bottom: 53px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.closebut{
+    width: 480px;
+    height: 70px;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgba(45,61,112,1);
+    border-radius: 45px;
+    font-size: 30px;
+    color: rgba(0,0,0,1);
+    line-height: 70px;
+    text-align: center;
+}
+.closebut:active{
+    color: rgba(0,0,0,.3);
+    border: 1px solid rgba(45,61,112,.3);
+}

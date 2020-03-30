@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="8px" viewBox="0 0 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>三角形</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0705待派单" transform="translate(-152.000000, -245.000000)" fill="#959FAB">
+            <g id="分组-11" transform="translate(28.000000, 219.000000)">
+                <g id="分组-6" transform="translate(34.000000, 10.000000)">
+                    <path d="M96.7525767,16.8600877 L101.548808,22.3414954 C101.912491,22.757132 101.870373,23.3888946 101.454736,23.7525767 C101.272445,23.9120818 101.038455,24 100.796232,24 L91.2037682,24 C90.6514835,24 90.2037682,23.5522847 90.2037682,23 C90.2037682,22.7577769 90.2916865,22.5237869 90.4511915,22.3414954 L95.2474233,16.8600877 C95.6111054,16.444451 96.242868,16.4023335 96.6585046,16.7660156 C96.6919154,16.79525 96.7233423,16.8266769 96.7525767,16.8600877 Z" id="三角形" transform="translate(96.000000, 20.000000) rotate(-180.000000) translate(-96.000000, -20.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

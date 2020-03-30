@@ -1,0 +1,25 @@
+.body{
+    height: 98px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.imgbody{
+    position: absolute;
+    bottom: 26px;
+    left: 30px;
+}
+
+img{
+    height: 38px;
+    width: 23px;
+}
+.img2body{
+    position: absolute;
+    bottom: 26px;
+    right: 30px;
+}

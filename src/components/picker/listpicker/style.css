@@ -1,0 +1,28 @@
+.list-picker .am-picker-col-indicator {
+    top: 0 !important;
+}
+
+.list-picker .am-picker-col-content{
+    padding: 0 !important;
+}
+
+.list-picker .am-picker-col{
+    height: 270px;
+}
+
+.list-picker .am-picker-col-mask{
+    background-image: none !important;
+}
+
+.list-picker .am-picker-col-item-selected{
+    color: #000000 !important;
+    font-weight: bold;
+}
+.list-picker .am-picker-col-indicator {
+    background: rgba(230,233,239,.6) !important;
+    opacity:none !important;
+}
+.list-picker .am-picker-col-item {
+    font-size: 28px;
+    color: rgba(0,0,0,0.5);
+}
