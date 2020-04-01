@@ -22,6 +22,7 @@ interface Props {
    * 设置图片上部外边距
    */
   top?: number;
+  bottom?: number;
   /**
    * 设置图片左部外边距
    */
@@ -53,6 +54,7 @@ export const Image: React.FC<Props> = React.memo(props => {
     right,
     onClick,
     border,
+    bottom,
     borderColor = "#EEEEEE",
     borderType = "solid"
   } = props;
@@ -67,11 +69,16 @@ export const Image: React.FC<Props> = React.memo(props => {
       : undefined,
     marginTop: top ? px2vw(top) : undefined,
     marginLeft: left ? px2vw(left) : undefined,
-    marginRight: right ? px2vw(right) : undefined
+    marginRight: right ? px2vw(right) : undefined,
+    marginBottom: bottom && px2vw(bottom)
+  };
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
   };
   return (
     <div style={stylebody}>
-      <img src={url} alt="图片" style={style} onClick={onClick} />
+      <img src={url} alt="图片" style={style} onClick={click} />
     </div>
   );
 });

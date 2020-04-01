@@ -9,13 +9,25 @@ import { connect } from "react-redux";
 import { add, currentuuidChange } from "./home.reducer";
 import { Wrap } from "../../components/wrap";
 import { View } from "../../components/view";
-import { SelectButton, Background } from "../../components/button";
+import {
+  SelectButton,
+  Background,
+  LongButton,
+  Button
+} from "../../components/button";
 import { Card } from "../../components/card";
 import sm1 from "./sm1.svg";
 import { Image } from "../../components/image";
 import { BaseLine } from "../../components/baseline";
 import { MaskAllScreen } from "../../components/mask-all-screen";
 import { BasicModal } from "../../components/modal";
+import {
+  ScanningList,
+  Selectlist,
+  StoreHouse,
+  SourceTargetStoreHouse,
+  DefaultStoreHouse
+} from "../../business_components/dms-move";
 
 interface Props extends iStateProps, iDispatchProps {}
 interface State {
@@ -23,14 +35,16 @@ interface State {
   value1: string | number;
 }
 
-export class Home extends PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      value: "GS01-01",
-      value1: ""
-    };
-  }
+export class Home extends PureComponent<Props> {
+  state = {
+    value: "GS01-01",
+    value1: "",
+    selectValue: 10110110,
+    flag: false,
+    storehose: "",
+    targethose: "",
+    check: false
+  };
   private replace = (jjj: any, ob: any) => {
     const { currentuuid } = this.props;
     if (jjj.uuid === currentuuid) {
@@ -82,7 +96,7 @@ export class Home extends PureComponent<Props, State> {
           </Text>
         </Header>
         <Wrap reduceHeight={13}>
-          <MaskAllScreen visible={true}>
+          {/* <MaskAllScreen visible={true}>
             <BasicModal>
               <View align="center">
                 <Text
@@ -99,72 +113,87 @@ export class Home extends PureComponent<Props, State> {
                 </Text>
               </View>
             </BasicModal>
-          </MaskAllScreen>
-          <Card width={750} top={30}>
-            <View
-              height={100}
-              paddingLeft={29}
-              paddingRight={30}
-              alignItem="center"
-            >
-              <Text right={27} height={40} color="#252525" size={28}>
-                来源库位
-              </Text>
-              <SelectButton
-                onClick={() => {
-                  console.log(1);
-                }}
-              >
-                <Input
-                  onSubmit={() => {
-                    console.log(3);
-                  }}
-                  onChange={value => {
-                    this.setState({ value });
-                  }}
-                  value={this.state.value}
-                  width={224}
-                  placeholder="请扫描或输入枯萎"
-                ></Input>
-              </SelectButton>
-              <View alignItem="center" align="end">
-                <Image url={sm1} height={38} width={38}></Image>
-              </View>
-            </View>
-            <BaseLine width={690}></BaseLine>
+          </MaskAllScreen> */}
 
-            <View
-              height={100}
-              paddingLeft={29}
-              paddingRight={30}
-              alignItem="center"
-            >
-              <Text right={27} height={40} color="#252525" size={28}>
-                目标库位
-              </Text>
-              <SelectButton
-                onClick={() => {
-                  console.log(1);
-                }}
-              >
-                <Input
-                  onSubmit={() => {
-                    console.log(3);
-                  }}
-                  onChange={value => {
-                    this.setState({ value });
-                  }}
-                  value={this.state.value1}
-                  width={224}
-                  placeholder="请扫描或输入库位"
-                ></Input>
-              </SelectButton>
-              <View alignItem="center" align="end">
-                <Image url={sm1} height={38} width={38}></Image>
-              </View>
-            </View>
-            <BaseLine width={690}></BaseLine>
+          <Selectlist
+            onClick={() => {
+              alert("扫描");
+            }}
+            onSubmit={value => {
+              alert(value);
+            }}
+            value={this.state.selectValue}
+            onChange={selectValue => {
+              this.setState({ selectValue });
+            }}
+          ></Selectlist>
+          <ScanningList top={20} onClick={() => alert(123)}></ScanningList>
+          <StoreHouse
+            inventory={20}
+            top={40}
+            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+            sourceStoreHouse={this.state.storehose}
+            sourceStoreHouseChange={storehose => this.setState({ storehose })}
+            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
+            sourceStoreHouseOpen={this.state.flag}
+            sourceStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+            targetStoreHouse={this.state.targethose}
+            targetStoreHouseChange={targethose => this.setState({ targethose })}
+            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
+            targetStoreHouseOpen={this.state.flag}
+            targetStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+          ></StoreHouse>
 
+          <SourceTargetStoreHouse
+            top={40}
+            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+            sourceStoreHouse={this.state.storehose}
+            sourceStoreHouseChange={storehose => this.setState({ storehose })}
+            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
+            sourceStoreHouseOpen={this.state.flag}
+            sourceStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+            targetStoreHouse={this.state.targethose}
+            targetStoreHouseChange={targethose => this.setState({ targethose })}
+            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
+            targetStoreHouseOpen={this.state.flag}
+            targetStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+          ></SourceTargetStoreHouse>
+
+          <DefaultStoreHouse
+            defaultCheck={this.state.check}
+            onCheckChange={flag => {
+              this.setState({ check: flag });
+            }}
+            top={40}
+            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+            sourceStoreHouse={this.state.storehose}
+            sourceStoreHouseChange={storehose => this.setState({ storehose })}
+            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
+            sourceStoreHouseOpen={this.state.flag}
+            sourceStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+            targetStoreHouse={this.state.targethose}
+            targetStoreHouseChange={targethose => this.setState({ targethose })}
+            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
+            targetStoreHouseOpen={this.state.flag}
+            targetStoreHouseSelectButtonClick={() => {
+              this.setState({ flag: !this.state.flag });
+            }}
+            moveStock={20}
+            targetStock={30}
+          >
             <View
               height={100}
               paddingLeft={29}
@@ -172,15 +201,14 @@ export class Home extends PureComponent<Props, State> {
               alignItem="center"
             >
               <Text right={27} height={40} color="#252525" size={28}>
-                可移动库存量
+                需移动库存量
               </Text>
               <View alignItem="center" align="end">
-                <Text color="#1D1F2B" size={30}>
-                  20
-                </Text>
+                <Text color="#1D1F2B" size={30}></Text>
               </View>
             </View>
-          </Card>
+            <BaseLine top={16} width={690}></BaseLine>
+          </DefaultStoreHouse>
         </Wrap>
       </>
     );

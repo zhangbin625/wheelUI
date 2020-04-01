@@ -19,15 +19,24 @@ export const Background: React.FC<Props> = React.memo(props => {
     radius = 40,
     color = "#EEF0F6",
     left = 0,
-    top = 0
+    top = 0,
+    onClick
   } = props;
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
+  };
   const style = {
     display: "inline-block",
     padding: `${px2vw(verticalPadding)} ${px2vw(levelPadding)}`,
     background: color,
     borderRadius: px2vw(radius),
-    marginTop:px2vw(top),
-    marginLeft:px2vw(left)
+    marginTop: px2vw(top),
+    marginLeft: px2vw(left)
   };
-  return <div style={style}>{children}</div>;
+  return (
+    <div onClick={click} style={style}>
+      {children}
+    </div>
+  );
 });

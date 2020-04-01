@@ -12,6 +12,7 @@ interface Props {
    * 用来设置卡片的上边距
    */
   top?: number;
+  bottom?: number;
   /**
    * 用来设置卡片的宽度
    */
@@ -68,7 +69,8 @@ export const Card: React.FC<Props> = React.memo(props => {
     radius = 20,
     border,
     borderColor = "#EEEEEE",
-    borderType = "solid"
+    borderType = "solid",
+    bottom
   } = props;
   let justifyContent;
   switch (align) {
@@ -84,8 +86,15 @@ export const Card: React.FC<Props> = React.memo(props => {
   }
   const styled = {
     marginTop: top && px2vw(top),
+    marginBottom: bottom && px2vw(bottom),
     justifyContent
   };
+
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
+  };
+
   const content: React.CSSProperties = {
     width: px2vw(width),
     paddingBottom: px2vw(paddingBottom),
@@ -103,7 +112,7 @@ export const Card: React.FC<Props> = React.memo(props => {
 
   return (
     <div style={styled} className={styles.body}>
-      <div style={content} className={styles.content} onClick={onClick}>
+      <div style={content} className={styles.content} onClick={click}>
         {children}
       </div>
     </div>

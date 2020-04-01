@@ -18,6 +18,8 @@ interface Props {
   onClick?: () => void;
   left?: number;
   top?: number;
+  bottom?: number;
+  right?: number;
 }
 export const ColorCard: React.FC<Props> = React.memo(props => {
   const {
@@ -26,15 +28,24 @@ export const ColorCard: React.FC<Props> = React.memo(props => {
     endColor = "#FFFFFF",
     onClick,
     left,
-    top
+    top,
+    right,
+    bottom
   } = props;
+
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
+  };
   const style: React.CSSProperties = {
+    marginBottom: bottom && px2vw(bottom),
+    marginRight: right && px2vw(right),
     marginTop: top ? px2vw(top) : undefined,
     marginLeft: left ? px2vw(left) : undefined,
     background: `linear-gradient(43deg,  ${startColor} 0%, ${endColor} 100%)`
   };
   return (
-    <div className={styles.body} style={style} onClick={onClick}>
+    <div className={styles.body} style={style} onClick={click}>
       <img className={styles.img} src={root} alt="路线"></img>
       {children}
     </div>

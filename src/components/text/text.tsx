@@ -49,10 +49,11 @@ interface Props {
    * 用来设置text组件的文字内容展示样式，line-through为中划线，underline为下划线，overline为上划线
    */
   decoration?: "overline" | "underline" | "line-through";
+  click?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const ContainerFeed = styled.div.attrs({
-  onClick: (props: any) => props.onClick || null
+  onClick: (props: any) => props.click || null
 })`
   margin-top: ${({ top }: Props) => top && px2vw(top)};
   margin-bottom: ${({ bottom }) => bottom && px2vw(bottom)};
@@ -68,7 +69,7 @@ const ContainerFeed = styled.div.attrs({
   -webkit-line-clamp: ${({ lineNum }) => lineNum || null};
   display: ${({ lineNum }) => (lineNum ? "-webkit-box" : "inline-block")};
   line-height: ${({ height, lineHeight }) => {
-    if (!height&&!lineHeight) {
+    if (!height && !lineHeight) {
       return undefined;
     } else if (height && !lineHeight) {
       return px2vw(height);
@@ -85,6 +86,14 @@ const ContainerFeed = styled.div.attrs({
 `;
 
 export const Text: React.FC<Props> = React.memo(props => {
-  const { children, ...prop } = props;
-  return <ContainerFeed {...prop}>{children}</ContainerFeed>;
+  const { children, onClick, ...prop } = props;
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
+  };
+  return (
+    <ContainerFeed {...prop} click={click}>
+      {children}
+    </ContainerFeed>
+  );
 });

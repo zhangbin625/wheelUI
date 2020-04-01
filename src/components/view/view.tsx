@@ -190,12 +190,17 @@ export const View: React.FC<Props> = React.memo(props => {
     width: `100%`,
     height: `100%`,
     top: 0,
-    left: 0
+    left: 0,
+    zIndex: 0
+  };
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick && onClick();
   };
   return (
-    <div style={styled} className={styles.body} onClick={onClick}>
+    <div style={styled} className={styles.body} onClick={click}>
       {children}
-      {showBorder?<div style={styleBoder}></div>:null}
+      {showBorder ? <div style={styleBoder}></div> : null}
     </div>
   );
 });

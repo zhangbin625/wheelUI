@@ -9,6 +9,7 @@
     color: rgba(0,0,0,1);
     text-align: center;
     line-height: 70px;
+    z-index: 999;
 }
 .default:active{
     color: rgba(0,0,0,.3);
@@ -23,6 +24,7 @@
     color: rgba(255,255,255,1);
     text-align: center;
     line-height: 70px;
+    z-index: 999;
 }
 .primary:active{
     color: rgba(255,255,255,.3);

@@ -12,6 +12,10 @@ interface Props {
   width?: number;
   color?: string;
   fontSize?: number;
+  left?: number;
+  right?: number;
+  top?: number;
+  bottom?: number;
 }
 export const Input: React.FC<Props> = React.memo((props: Props) => {
   const {
@@ -22,6 +26,10 @@ export const Input: React.FC<Props> = React.memo((props: Props) => {
     color = "#000000",
     height = 40,
     width,
+    left,
+    right,
+    top,
+    bottom,
     ...baseProps
   } = props;
   const style: React.CSSProperties = {
@@ -30,7 +38,11 @@ export const Input: React.FC<Props> = React.memo((props: Props) => {
     color: color,
     fontSize: fontSize && px2vw(fontSize),
     height: height && px2vw(height),
-    width: width && px2vw(width)
+    width: width && px2vw(width),
+    marginTop: top && px2vw(top),
+    marginLeft: left && px2vw(left),
+    marginRight: right && px2vw(right),
+    marginBottom: bottom && px2vw(bottom)
   };
   const onblur = () => {
     window.scroll(0, 1);
@@ -41,8 +53,12 @@ export const Input: React.FC<Props> = React.memo((props: Props) => {
   const keyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13 && onSubmit) onSubmit((e.target as any).value);
   };
+  const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+  };
   return (
     <input
+      onClick={click}
       onKeyDown={keyDown}
       onChange={change}
       onBlur={onblur}
