@@ -1,0 +1,7 @@
+.fadee-enter{
+    color: red;
+}
+.fadee-enter .fadee-enter-action{
+    color: green;
+    transition: background-color 50000ms ease;
+}

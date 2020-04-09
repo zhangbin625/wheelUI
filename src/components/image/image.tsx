@@ -73,8 +73,10 @@ export const Image: React.FC<Props> = React.memo(props => {
     marginBottom: bottom && px2vw(bottom)
   };
   const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-    onClick && onClick();
+    if(onClick){
+      e.stopPropagation();
+      onClick();
+    }
   };
   return (
     <div style={stylebody}>

@@ -2,6 +2,7 @@ import React from "react";
 import { PureComponent } from "react";
 import { IRootState } from "../../store/reducers";
 import styles from "./style.module.css";
+import { forceCheck } from "react-lazyload";
 import { Header } from "components/header";
 import { Input } from "../../components/input";
 import { Text } from "../../components/text";
@@ -9,11 +10,14 @@ import { connect } from "react-redux";
 import { add, currentuuidChange } from "./home.reducer";
 import { Wrap } from "../../components/wrap";
 import { View } from "../../components/view";
+import { Scroll } from "../../components/scroll";
+import styled from "styled-components";
+import "./style.css";
 import {
   SelectButton,
   Background,
   LongButton,
-  Button
+  Button,
 } from "../../components/button";
 import { Card } from "../../components/card";
 import sm1 from "./sm1.svg";
@@ -21,12 +25,14 @@ import { Image } from "../../components/image";
 import { BaseLine } from "../../components/baseline";
 import { MaskAllScreen } from "../../components/mask-all-screen";
 import { BasicModal } from "../../components/modal";
+import Slider from "../../components/slider/slider";
+import TransitionGroup from "react-addons-css-transition-group";
 import {
   ScanningList,
   Selectlist,
   StoreHouse,
   SourceTargetStoreHouse,
-  DefaultStoreHouse
+  DefaultStoreHouse,
 } from "../../business_components/dms-move";
 
 interface Props extends iStateProps, iDispatchProps {}
@@ -35,6 +41,13 @@ interface State {
   value1: string | number;
 }
 
+const Content = styled.div`
+  position: fixed;
+  top: 94px;
+  left: 0;
+  bottom: 60px;
+  width: 100%;
+`;
 export class Home extends PureComponent<Props> {
   state = {
     value: "GS01-01",
@@ -43,8 +56,16 @@ export class Home extends PureComponent<Props> {
     flag: false,
     storehose: "",
     targethose: "",
-    check: false
+    check: false,
+    list: [],
+    bannerList: [1, 2, 3, 4].map((item) => {
+      return {
+        imageUrl:
+          "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg",
+      };
+    }),
   };
+
   private replace = (jjj: any, ob: any) => {
     const { currentuuid } = this.props;
     if (jjj.uuid === currentuuid) {
@@ -69,9 +90,9 @@ export class Home extends PureComponent<Props> {
         tabIndex: tindex,
         currentuuid: currentuuid,
         onfocus: this.onfocus,
-        showBorder: true
+        showBorder: true,
       },
-      children: []
+      children: [],
     };
 
     let jjj = JSON.parse(JSON.stringify(obj));
@@ -95,8 +116,30 @@ export class Home extends PureComponent<Props> {
             场间移动
           </Text>
         </Header>
-        <Wrap reduceHeight={13}>
-          {/* <MaskAllScreen visible={true}>
+        <button
+          onClick={() => {
+            let list: any = this.state.list.slice();
+            console.log(list);
+            list.push(1);
+            this.setState({ list });
+          }}
+        >
+          add
+        </button>
+        <TransitionGroup transitionName="fadee" transitionEnterTimeout={5000}>
+          {this.state.list.map((item: any, index: number) => (
+            <div>
+             1234
+            </div>
+          ))}
+        </TransitionGroup>
+        <Content>
+          <Scroll pullUpLoading onScroll={forceCheck}>
+            <div>
+              <Slider bannerList={this.state.bannerList}></Slider>
+
+              {/* <Wrap reduceHeight={13}> */}
+              {/* <MaskAllScreen visible={true}>
             <BasicModal>
               <View align="center">
                 <Text
@@ -115,101 +158,152 @@ export class Home extends PureComponent<Props> {
             </BasicModal>
           </MaskAllScreen> */}
 
-          <Selectlist
-            onClick={() => {
-              alert("扫描");
-            }}
-            onSubmit={value => {
-              alert(value);
-            }}
-            value={this.state.selectValue}
-            onChange={selectValue => {
-              this.setState({ selectValue });
-            }}
-          ></Selectlist>
-          <ScanningList top={20} onClick={() => alert(123)}></ScanningList>
-          <StoreHouse
-            inventory={20}
-            top={40}
-            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
-            sourceStoreHouse={this.state.storehose}
-            sourceStoreHouseChange={storehose => this.setState({ storehose })}
-            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
-            sourceStoreHouseOpen={this.state.flag}
-            sourceStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
-            targetStoreHouse={this.state.targethose}
-            targetStoreHouseChange={targethose => this.setState({ targethose })}
-            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
-            targetStoreHouseOpen={this.state.flag}
-            targetStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-          ></StoreHouse>
+              <Selectlist
+                onClick={() => {
+                  alert("扫描");
+                }}
+                onSubmit={(value) => {
+                  alert(value);
+                }}
+                value={this.state.selectValue}
+                onChange={(selectValue) => {
+                  this.setState({ selectValue });
+                }}
+              ></Selectlist>
+              <Selectlist
+                onClick={() => {
+                  alert("扫描");
+                }}
+                onSubmit={(value) => {
+                  alert(value);
+                }}
+                value={this.state.selectValue}
+                onChange={(selectValue) => {
+                  this.setState({ selectValue });
+                }}
+              ></Selectlist>
+              <Selectlist
+                onClick={() => {
+                  alert("扫描");
+                }}
+                onSubmit={(value) => {
+                  alert(value);
+                }}
+                value={this.state.selectValue}
+                onChange={(selectValue) => {
+                  this.setState({ selectValue });
+                }}
+              ></Selectlist>
+              <ScanningList top={20} onClick={() => alert(123)}></ScanningList>
+              <StoreHouse
+                inventory={20}
+                top={40}
+                sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+                sourceStoreHouse={this.state.storehose}
+                sourceStoreHouseChange={(storehose) =>
+                  this.setState({ storehose })
+                }
+                sourceStoreHouseScanning={() =>
+                  alert("sourceStoreHouseScanning")
+                }
+                sourceStoreHouseOpen={this.state.flag}
+                sourceStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+                targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+                targetStoreHouse={this.state.targethose}
+                targetStoreHouseChange={(targethose) =>
+                  this.setState({ targethose })
+                }
+                targetStoreHouseScanning={() =>
+                  alert("targetStoreHouseScanning")
+                }
+                targetStoreHouseOpen={this.state.flag}
+                targetStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+              ></StoreHouse>
 
-          <SourceTargetStoreHouse
-            top={40}
-            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
-            sourceStoreHouse={this.state.storehose}
-            sourceStoreHouseChange={storehose => this.setState({ storehose })}
-            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
-            sourceStoreHouseOpen={this.state.flag}
-            sourceStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
-            targetStoreHouse={this.state.targethose}
-            targetStoreHouseChange={targethose => this.setState({ targethose })}
-            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
-            targetStoreHouseOpen={this.state.flag}
-            targetStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-          ></SourceTargetStoreHouse>
+              <SourceTargetStoreHouse
+                top={40}
+                sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+                sourceStoreHouse={this.state.storehose}
+                sourceStoreHouseChange={(storehose) =>
+                  this.setState({ storehose })
+                }
+                sourceStoreHouseScanning={() =>
+                  alert("sourceStoreHouseScanning")
+                }
+                sourceStoreHouseOpen={this.state.flag}
+                sourceStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+                targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+                targetStoreHouse={this.state.targethose}
+                targetStoreHouseChange={(targethose) =>
+                  this.setState({ targethose })
+                }
+                targetStoreHouseScanning={() =>
+                  alert("targetStoreHouseScanning")
+                }
+                targetStoreHouseOpen={this.state.flag}
+                targetStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+              ></SourceTargetStoreHouse>
 
-          <DefaultStoreHouse
-            defaultCheck={this.state.check}
-            onCheckChange={flag => {
-              this.setState({ check: flag });
-            }}
-            top={40}
-            sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
-            sourceStoreHouse={this.state.storehose}
-            sourceStoreHouseChange={storehose => this.setState({ storehose })}
-            sourceStoreHouseScanning={() => alert("sourceStoreHouseScanning")}
-            sourceStoreHouseOpen={this.state.flag}
-            sourceStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-            targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
-            targetStoreHouse={this.state.targethose}
-            targetStoreHouseChange={targethose => this.setState({ targethose })}
-            targetStoreHouseScanning={() => alert("targetStoreHouseScanning")}
-            targetStoreHouseOpen={this.state.flag}
-            targetStoreHouseSelectButtonClick={() => {
-              this.setState({ flag: !this.state.flag });
-            }}
-            moveStock={20}
-            targetStock={30}
-          >
-            <View
-              height={100}
-              paddingLeft={29}
-              paddingRight={30}
-              alignItem="center"
-            >
-              <Text right={27} height={40} color="#252525" size={28}>
-                需移动库存量
-              </Text>
-              <View alignItem="center" align="end">
-                <Text color="#1D1F2B" size={30}></Text>
-              </View>
-            </View>
-            <BaseLine top={16} width={690}></BaseLine>
-          </DefaultStoreHouse>
-        </Wrap>
+              <DefaultStoreHouse
+                defaultCheck={this.state.check}
+                onCheckChange={(flag) => {
+                  this.setState({ check: flag });
+                }}
+                top={40}
+                sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
+                sourceStoreHouse={this.state.storehose}
+                sourceStoreHouseChange={(storehose) =>
+                  this.setState({ storehose })
+                }
+                sourceStoreHouseScanning={() =>
+                  alert("sourceStoreHouseScanning")
+                }
+                sourceStoreHouseOpen={this.state.flag}
+                sourceStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+                targetStoreHouseOnSubmit={() => alert(this.state.targethose)}
+                targetStoreHouse={this.state.targethose}
+                targetStoreHouseChange={(targethose) =>
+                  this.setState({ targethose })
+                }
+                targetStoreHouseScanning={() =>
+                  alert("targetStoreHouseScanning")
+                }
+                targetStoreHouseOpen={this.state.flag}
+                targetStoreHouseSelectButtonClick={() => {
+                  this.setState({ flag: !this.state.flag });
+                }}
+                moveStock={20}
+                targetStock={30}
+              >
+                <View
+                  height={100}
+                  paddingLeft={29}
+                  paddingRight={30}
+                  alignItem="center"
+                >
+                  <Text right={27} height={40} color="#252525" size={28}>
+                    需移动库存量
+                  </Text>
+                  <View alignItem="center" align="end">
+                    <Text color="#1D1F2B" size={30}></Text>
+                  </View>
+                </View>
+                <BaseLine top={16} width={690}></BaseLine>
+              </DefaultStoreHouse>
+              {/* </Wrap> */}
+            </div>
+          </Scroll>
+        </Content>
       </>
     );
   }
@@ -220,12 +314,12 @@ const mapState = (state: IRootState) => {
   return {
     tindex: state.home.tindex,
     currentuuid: state.home.currentuuid,
-    obj: state.home.obj
+    obj: state.home.obj,
   };
 };
 const mapDispatch = {
   add,
-  currentuuidChange
+  currentuuidChange,
 };
 
 export default connect(mapState, mapDispatch)(Home);

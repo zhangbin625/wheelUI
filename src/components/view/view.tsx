@@ -181,8 +181,8 @@ export const View: React.FC<Props> = React.memo(props => {
     borderRight: borderRight
       ? `${borderColor} ${px2vw(borderRight)} ${borderType}`
       : undefined,
-    background: background ? background : undefined
-    // border: showBorder ? `1px solid green` : undefined
+    background: background ? background : undefined,
+    zIndex:1
   };
   const styleBoder: React.CSSProperties = {
     position: "absolute",
@@ -194,8 +194,10 @@ export const View: React.FC<Props> = React.memo(props => {
     zIndex: 0
   };
   const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-    onClick && onClick();
+    if(onClick){
+      e.stopPropagation();
+      onClick();
+    }
   };
   return (
     <div style={styled} className={styles.body} onClick={click}>
