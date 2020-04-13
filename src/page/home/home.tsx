@@ -12,6 +12,7 @@ import { Wrap } from "../../components/wrap";
 import { View } from "../../components/view";
 import { Scroll } from "../../components/scroll";
 import styled from "styled-components";
+import dll from "./dll.svg";
 import "./style.css";
 import {
   SelectButton,
@@ -34,7 +35,10 @@ import {
   SourceTargetStoreHouse,
   DefaultStoreHouse,
 } from "../../business_components/dms-move";
-
+import { PickCard } from "../../business_components/outline/pick-card";
+import { PickListDetails } from "../../business_components/outline/pick-list-details";
+import { DiscountModal } from "../../business_components/outline/discount-modal";
+import { Container } from "../../components/container";
 interface Props extends iStateProps, iDispatchProps {}
 interface State {
   value: string | number;
@@ -54,16 +58,41 @@ export class Home extends PureComponent<Props> {
     value1: "",
     selectValue: 10110110,
     flag: false,
+    downFlag: false,
     storehose: "",
     targethose: "",
     check: false,
-    list: [],
+    list: [1, 2, 3, 4, 5],
     bannerList: [1, 2, 3, 4].map((item) => {
       return {
         imageUrl:
           "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg",
       };
     }),
+  };
+  private pullDown = () => {
+    console.log('pullDown')
+    this.setState({ downFlag: true });
+    setTimeout(() => {
+      console.log(2);
+      const arr = [1, 2, 3, 4, 5];
+      this.setState({ downFlag: false, list: arr });
+    }, 500);
+  };
+
+  private pullUp = () => {
+    console.log('pullUp')
+    this.setState({ flag: true });
+    setTimeout(() => {
+      const { list } = this.state;
+      const arr = Object.assign([], list);
+      const length = arr.length;
+      for (let i = 1; i < 6; i++) {
+        arr.push(length + i);
+      }
+      this.setState({ flag: false, list: arr });
+      console.log(length);
+    }, 200);
   };
 
   private replace = (jjj: any, ob: any) => {
@@ -116,30 +145,10 @@ export class Home extends PureComponent<Props> {
             场间移动
           </Text>
         </Header>
-        <button
-          onClick={() => {
-            let list: any = this.state.list.slice();
-            console.log(list);
-            list.push(1);
-            this.setState({ list });
-          }}
-        >
-          add
-        </button>
-        <TransitionGroup transitionName="fadee" transitionEnterTimeout={5000}>
-          {this.state.list.map((item: any, index: number) => (
-            <div>
-             1234
-            </div>
-          ))}
-        </TransitionGroup>
-        <Content>
-          <Scroll pullUpLoading onScroll={forceCheck}>
-            <div>
-              <Slider bannerList={this.state.bannerList}></Slider>
+        {/* <Slider bannerList={this.state.bannerList}></Slider> */}
 
-              {/* <Wrap reduceHeight={13}> */}
-              {/* <MaskAllScreen visible={true}>
+        {/* <Wrap reduceHeight={13}> */}
+        {/* <MaskAllScreen visible={true}>
             <BasicModal>
               <View align="center">
                 <Text
@@ -158,7 +167,7 @@ export class Home extends PureComponent<Props> {
             </BasicModal>
           </MaskAllScreen> */}
 
-              <Selectlist
+        {/* <Selectlist
                 onClick={() => {
                   alert("扫描");
                 }}
@@ -169,8 +178,8 @@ export class Home extends PureComponent<Props> {
                 onChange={(selectValue) => {
                   this.setState({ selectValue });
                 }}
-              ></Selectlist>
-              <Selectlist
+              ></Selectlist> */}
+        {/* <Selectlist
                 onClick={() => {
                   alert("扫描");
                 }}
@@ -181,8 +190,8 @@ export class Home extends PureComponent<Props> {
                 onChange={(selectValue) => {
                   this.setState({ selectValue });
                 }}
-              ></Selectlist>
-              <Selectlist
+              ></Selectlist> */}
+        {/* <Selectlist
                 onClick={() => {
                   alert("扫描");
                 }}
@@ -193,9 +202,56 @@ export class Home extends PureComponent<Props> {
                 onChange={(selectValue) => {
                   this.setState({ selectValue });
                 }}
-              ></Selectlist>
-              <ScanningList top={20} onClick={() => alert(123)}></ScanningList>
-              <StoreHouse
+              ></Selectlist> */}
+        {/* <ScanningList top={20} onClick={() => alert(123)}></ScanningList> */}
+
+        <Wrap reduceHeight={14}  paddingBottom={40}>
+          <Scroll
+            pullDownLoading={this.state.downFlag}
+            pullDown={this.pullDown}
+            pullUpLoading={this.state.flag}
+            pullUp={this.pullUp}
+          >
+            {this.state.list.map((item) => (
+              <PickCard
+                key={item}
+                bottom={30}
+                onClick={() => alert(`领料单卡片`)}
+                status={dll}
+                transferredDepartment="水果"
+                transferDepartment="餐饮-咖啡饮品"
+                materialNumber={item}
+                creationTime="2017.09.14 10:40:32"
+                creator="卡卡西"
+              ></PickCard>
+            ))}
+          </Scroll>
+        </Wrap>
+        {/* <PickListDetails
+          top={30}
+          transferredDepartment="水果"
+          transferDepartment="餐饮-咖啡饮品"
+          creationTime="2017.09.14 10:40:32"
+          creator="卡卡西"
+        ></PickListDetails> */}
+
+        {/* <DiscountModal
+          onClose={() => this.setState({ flag: false })}
+          visible={this.state.flag}
+          value={this.state.value1}
+          onChange={(value1) => {
+            this.setState({ value1 });
+          }}
+          options={[
+            { value: "1", label: "无折扣" },
+            { value: "2", label: "9折" },
+            { value: "3", label: "8折" },
+            { value: "4", label: "7折" },
+            { value: "5", label: "6折" },
+            { value: "6", label: "5折" },
+          ]}
+        ></DiscountModal> */}
+        {/* <StoreHouse
                 inventory={20}
                 top={40}
                 sourceStoreHouseOnSubmit={() => alert(this.state.storehose)}
@@ -299,11 +355,8 @@ export class Home extends PureComponent<Props> {
                   </View>
                 </View>
                 <BaseLine top={16} width={690}></BaseLine>
-              </DefaultStoreHouse>
-              {/* </Wrap> */}
-            </div>
-          </Scroll>
-        </Content>
+              </DefaultStoreHouse> */}
+        {/* </Wrap> */}
       </>
     );
   }

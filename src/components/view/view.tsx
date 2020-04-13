@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./style.module.css";
 import { px2vw } from "../util";
+const flexContext = React.createContext("");
 interface Props {
   /**
    * 显示容器外边框，用来给开发者查看容器范围
@@ -124,7 +125,7 @@ const getAlign = (val: any) => {
   }
   return value;
 };
-export const View: React.FC<Props> = React.memo(props => {
+export const View: React.FC<Props> = React.memo((props) => {
   const {
     onClick,
     children,
@@ -148,21 +149,50 @@ export const View: React.FC<Props> = React.memo(props => {
     borderTop,
     borderBottom,
     background,
-    showBorder
+    showBorder,
   } = props;
+  const flexcontext = useContext(flexContext);
+  let flex = (() => {
+    if (flexcontext === "row") {
+      if (height && width) {
+        return undefined;
+      } else if (height && !width) {
+        return `1 0`;
+      } else if (!height && width) {
+        return undefined;
+      } else {
+        return 1;
+      }
+    } else if (flexcontext === "column") {
+      if (height && width) {
+        return undefined;
+      } else if (height && !width) {
+        return undefined;
+      } else if (!height && width) {
+        return `1 0`;
+      } else if (!height && !width) {
+        return 1;
+      } else {
+        return undefined;
+      }
+    } else {
+      return 1;
+    }
+  })();
   const justifyContent = getAlign(align);
   const alignItems = getAlign(alignItem);
   const styled: React.CSSProperties = {
+    overflow: 'hidden',
     position: "relative",
     flexDirection: direction,
-    height: height ? px2vw(height) : "100%",
+    width: width ? px2vw(width) : flexcontext === "column" ? "100%" : undefined,
+    height: height ? px2vw(height) : flexcontext === "row" ? "100%" : undefined,
     marginTop: px2vw(top),
     marginRight: right ? px2vw(right) : undefined,
     marginBottom: bottom ? px2vw(bottom) : undefined,
     justifyContent,
     alignItems,
-    flex: height || width ? undefined : 1,
-    width: width ? px2vw(width) : "100%",
+    flex,
     marginLeft: left ? px2vw(left) : "none",
     paddingBottom: px2vw(paddingBottom),
     paddingLeft: px2vw(paddingLeft),
@@ -182,8 +212,9 @@ export const View: React.FC<Props> = React.memo(props => {
       ? `${borderColor} ${px2vw(borderRight)} ${borderType}`
       : undefined,
     background: background ? background : undefined,
-    zIndex:1
+    zIndex: 1,
   };
+
   const styleBoder: React.CSSProperties = {
     position: "absolute",
     border: showBorder ? `1px solid green` : undefined,
@@ -191,18 +222,20 @@ export const View: React.FC<Props> = React.memo(props => {
     height: `100%`,
     top: 0,
     left: 0,
-    zIndex: 0
+    zIndex: 0,
   };
   const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(onClick){
+    if (onClick) {
       e.stopPropagation();
       onClick();
     }
   };
   return (
-    <div style={styled} className={styles.body} onClick={click}>
-      {children}
-      {showBorder ? <div style={styleBoder}></div> : null}
-    </div>
+    <flexContext.Provider value={direction}>
+      <div style={styled} className={styles.body} onClick={click}>
+        {children}
+        {showBorder ? <div style={styleBoder}></div> : null}
+      </div>
+    </flexContext.Provider>
   );
 });

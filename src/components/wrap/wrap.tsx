@@ -21,7 +21,7 @@ interface Props {
 }
 
 const Container = styled.div`
-  overflow: auto;
+  overflow: hidden;
   height: calc(100vh - ${({ reduceHeight }: Props) => reduceHeight || 0}vw);
   margin-top: ${({ top }) => top && px2vw(top)};
   border: ${({ showBorder }) => (showBorder ? `1px solid red` : null)};

@@ -55,7 +55,7 @@ interface Props {
   borderType?: "solid" | "dashed";
 }
 
-export const Card: React.FC<Props> = React.memo(props => {
+export const Card: React.FC<Props> = React.memo((props) => {
   const {
     onClick,
     top,
@@ -70,7 +70,7 @@ export const Card: React.FC<Props> = React.memo(props => {
     border,
     borderColor = "#EEEEEE",
     borderType = "solid",
-    bottom
+    bottom,
   } = props;
   let justifyContent;
   switch (align) {
@@ -87,7 +87,7 @@ export const Card: React.FC<Props> = React.memo(props => {
   const styled = {
     marginTop: top && px2vw(top),
     marginBottom: bottom && px2vw(bottom),
-    justifyContent
+    justifyContent,
   };
 
   const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -107,7 +107,7 @@ export const Card: React.FC<Props> = React.memo(props => {
       : undefined,
     borderTop: border
       ? `${px2vw(border)} ${borderColor} ${borderType} `
-      : undefined
+      : undefined,
   };
 
   return (

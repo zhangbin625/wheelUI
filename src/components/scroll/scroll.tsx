@@ -7,35 +7,10 @@ import React, {
   useImperativeHandle,
 } from "react";
 import BScroll from "better-scroll";
-import styled from "styled-components";
-import { Debounced } from "../util";
+import { ScrollContainer, PullDownLoading, PullUpLoading } from "./style";
+import { DownLoading ,UpLoading} from "../loading";
+import { Debounced, Throttle } from "../util";
 
-const ScrollContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-`;
-
-const PullUpLoading = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 5px;
-  width: 60px;
-  height: 60px;
-  margin: auto;
-  z-index: 100;
-`;
-
-export const PullDownLoading = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0px;
-  height: 30px;
-  margin: auto;
-  z-index: 100;
-`;
 interface Props {
   direction?: "vertiacal" | "horizental"; //滚动的方向
   click?: boolean; //是否支持点击
@@ -65,11 +40,11 @@ export const Scroll: React.FC<Props> = React.memo(
     const { pullUp = () => {}, pullDown = () => {}, onScroll } = props;
 
     let pullUpDebounce = useMemo(() => {
-      return new Debounced().use(pullUp, 500);
+      return new Throttle().use(pullUp, 500);
     }, [pullUp]);
 
     let pullDownDebounce = useMemo(() => {
-      return new Debounced().use(pullDown, 500);
+      return new Throttle().use(pullDown, 500);
     }, [pullDown]);
 
     useEffect(() => {
@@ -157,11 +132,17 @@ export const Scroll: React.FC<Props> = React.memo(
       : { display: "none" };
     return (
       <ScrollContainer ref={scrollContaninerRef}>
-        {props.children}
-        {/* 滑到底部加载动画 */}
-        <PullUpLoading style={PullUpdisplayStyle}>1</PullUpLoading>
-        {/* 顶部下拉刷新动画 */}
-        <PullDownLoading style={PullDowndisplayStyle}>2</PullDownLoading>
+        <div>
+          {/* 顶部下拉刷新动画 */}
+          <PullDownLoading style={PullDowndisplayStyle}>
+            <UpLoading></UpLoading>
+          </PullDownLoading>
+          {props.children}
+          {/* 滑到底部加载动画 */}
+          <PullUpLoading style={PullUpdisplayStyle}>
+            <DownLoading></DownLoading>
+          </PullUpLoading>
+        </div>
       </ScrollContainer>
     );
   })

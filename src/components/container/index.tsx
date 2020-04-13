@@ -40,7 +40,7 @@ interface Props {
   background?: string;
 }
 const Containe = styled.div`
-  overflow: auto;
+  overflow: hidden;
   height: ${({ height }: Props) => height && px2vw(height)};
   margin-top: ${({ top }) => top && px2vw(top)};
   padding-top: ${({ paddingTop }) => paddingTop && px2vw(paddingTop)};

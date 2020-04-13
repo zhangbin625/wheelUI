@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="110px" height="94px" viewBox="0 0 110 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>椭圆形</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="1.51936179 1.51393356 148.488838 1.50130792 148.480638 96.4860664 1.51116163 96.4986921"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="09领料单" transform="translate(-640.000000, -305.000000)">
+            <g id="分组-10" transform="translate(1.000000, 148.000000)">
+                <g id="椭圆形" transform="translate(600.000000, 154.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill-opacity="0" fill="#D8D8D8" transform="translate(75.000000, 49.000000) rotate(1.000000) translate(-75.000000, -49.000000) " xlink:href="#path-1"></use>
+                    <ellipse stroke="#FA5B5B" stroke-width="4" mask="url(#mask-2)" cx="107" cy="70.5" rx="66" ry="65.5"></ellipse>
+                    <path d="M107,127 C138.480231,127 164,101.704088 164,70.5 C164,39.2959116 138.480231,14 107,14 C75.5197693,14 50,39.2959116 50,70.5 C50,101.704088 75.5197693,127 107,127 Z" stroke="#FA5B5B" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,4" mask="url(#mask-2)"></path>
+                    <text id="待领料" mask="url(#mask-2)" transform="translate(98.082994, 51.668207) rotate(-30.000000) translate(-98.082994, -51.668207) " font-family="PingFang-SC-Bold, PingFang SC" font-size="24" font-weight="bold" fill="#FA5B5B">
+                        <tspan x="61.3254186" y="60.168207">待领料</tspan>
+                    </text>
+                    <text id="7FRESH" mask="url(#mask-2)" transform="translate(116.277060, 74.893499) rotate(-30.000000) translate(-116.277060, -74.893499) " font-family="PingFang-SC-Regular, PingFang SC" font-size="18" font-weight="normal" fill="#FA5B5B">
+                        <tspan x="78.1406961" y="81.3934994">7FRESH</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

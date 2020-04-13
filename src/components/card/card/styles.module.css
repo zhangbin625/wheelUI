@@ -2,6 +2,7 @@
     width: 750px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 .content{
     background: rgba(255,255,255,1);
