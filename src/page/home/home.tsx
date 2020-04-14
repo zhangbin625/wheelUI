@@ -241,12 +241,12 @@ export class Home extends PureComponent<Props> {
           creator="卡卡西"
         ></PickListDetails> */}
         {/* <PriceTagBinding onClick={() => alert("bangding")}></PriceTagBinding> */}
-        {/* <PriceTagDeregulation
+        <PriceTagDeregulation
           top={30}
           onClick={() => alert("unbangding")}
-        ></PriceTagDeregulation> */}
-          <PriceTagButton top={100} type='bind'></PriceTagButton>
-        <PriceTagButton top={50} type='unbind'></PriceTagButton>
+        ></PriceTagDeregulation>
+        {/* <PriceTagButton top={100} type="bind"></PriceTagButton> */}
+        <PriceTagButton top={50} type="unbind"></PriceTagButton>
         <TaskTipModal
           onClose={() => {
             alert("关闭");
