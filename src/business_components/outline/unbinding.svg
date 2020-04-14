@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="318px" height="316px" viewBox="0 0 318 316" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>价签解绑</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="47.6419271%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#5179CA" offset="0%"></stop>
+            <stop stop-color="#1A3897" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="139" cy="139" r="139"></circle>
+        <filter x="-12.9%" y="-8.6%" width="125.9%" height="125.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="12" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.152941176   0 0 0 0 0.325490196   0 0 0 0 0.870588235  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="0%" y1="50%" x2="97.6361795%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#596DAA" offset="0%"></stop>
+            <stop stop-color="#2D3D70" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-5" cx="139" cy="139" r="129"></circle>
+        <filter x="-14.0%" y="-9.3%" width="127.9%" height="127.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feMorphology radius="5" operator="erode" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="12" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.31372549   0 0 0 0 0.4   0 0 0 0 0.568627451  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="08电子价签" transform="translate(-216.000000, -549.000000)">
+            <g id="价签解绑" transform="translate(236.000000, 556.000000)">
+                <g id="分组">
+                    <g id="椭圆形" opacity="0.105422247">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="椭圆形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                        <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                </g>
+                <path d="M155.587992,141.493856 C155.587992,142.331234 155.2594,143.126213 154.644484,143.730265 C154.039902,144.334184 153.244923,144.673773 152.408075,144.673773 L100.469442,144.673773 C99.6320642,144.673773 98.8370851,144.345181 98.2325035,143.730265 C97.6284519,143.126213 97.2895258,142.331234 97.2895258,141.493856 L97.2895258,96.9750279 C97.2895258,96.1375174 97.6175872,95.3425384 98.2325035,94.7386192 C98.8370851,94.1340377 99.6320642,93.7951116 100.469442,93.7951116 L108.15424,93.7951116 L108.15424,88.495251 L100.479777,88.495251 C95.8160321,88.495251 92,92.3112831 92,96.9750279 L92,141.493856 C92,146.157601 95.8160321,149.973633 100.479777,149.973633 L152.41841,149.973633 C157.082155,149.973633 160.898187,146.157601 160.898187,141.493856 L160.898187,131.614519 L155.598326,131.614519 L155.598326,141.493856 L155.587992,141.493856 Z M178.080335,55 L126.141702,55 C121.477824,55 117.661925,58.8160321 117.661925,63.4797768 L117.661925,68.5461785 L122.961785,68.5461785 L122.961785,63.4797768 C122.961785,62.6423989 123.290377,61.8474198 123.905293,61.2433682 C124.509212,60.6389191 125.304191,60.2998605 126.141702,60.2998605 L178.080335,60.2998605 C178.917713,60.2998605 179.712692,60.6284519 180.316876,61.2433682 C180.921192,61.8474198 181.260251,62.6423989 181.260251,63.4797768 L181.260251,107.998605 C181.260251,108.836116 180.931527,109.631095 180.316876,110.235014 C179.712692,110.839596 178.917713,111.178522 178.080335,111.178522 L169.399163,111.178522 L169.399163,116.478382 L178.080335,116.478382 C182.744079,116.478382 186.560112,112.66235 186.560112,107.998605 L186.560112,63.4797768 C186.560112,58.8160321 182.744079,55 178.080335,55 L178.080335,55 Z M101.126227,67.0835495 L180.698731,133.851457 L177.29622,137.911283 L97.7237169,71.1433752 L101.126227,67.0835495 Z" id="解绑" fill="#FFFFFF"></path>
+                <text font-family="PingFangHK-Regular, PingFang HK" font-size="28" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="83" y="205">价签解绑</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

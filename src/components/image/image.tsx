@@ -70,7 +70,8 @@ export const Image: React.FC<Props> = React.memo(props => {
     marginTop: top ? px2vw(top) : undefined,
     marginLeft: left ? px2vw(left) : undefined,
     marginRight: right ? px2vw(right) : undefined,
-    marginBottom: bottom && px2vw(bottom)
+    marginBottom: bottom && px2vw(bottom),
+    zIndex:20,
   };
   const click = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if(onClick){

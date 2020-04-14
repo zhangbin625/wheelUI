@@ -1,17 +1,10 @@
 import React from "react";
 import styles from "./style.module.css";
 
-interface Props {
-  /**
-   * 
-   */
+interface Props extends BGProps, CloseProps, TextProps {
+  showTextButton?: boolean;
   showFooter?: boolean;
   showClose?: boolean;
-  onOk?: () => void;
-  onCancel?: () => void;
-  onClose?: () => void;
-  leftName?: string;
-  rightName?: string;
   icon?: string;
 }
 
@@ -23,10 +16,15 @@ interface BGProps {
 }
 
 interface CloseProps {
-  onCancel?: () => void;
+  onClose?: () => void;
 }
 
-const ButtonGrop: React.FC<BGProps> = React.memo(props => {
+interface TextProps {
+  textName?: string;
+  onTextClick?: () => void;
+}
+
+const ButtonGrop: React.FC<BGProps> = React.memo((props) => {
   const { onOk, onCancel, leftName = "取消", rightName = "确定" } = props;
   return (
     <div className={styles.buttonGroup}>
@@ -39,18 +37,29 @@ const ButtonGrop: React.FC<BGProps> = React.memo(props => {
     </div>
   );
 });
-const CloseBut: React.FC<CloseProps> = React.memo(props => {
-  const { onCancel } = props;
+const CloseBut: React.FC<CloseProps> = React.memo((props) => {
+  const { onClose } = props;
   return (
     <div className={styles.close}>
-      <div className={styles.closebut} onClick={onCancel}>
+      <div className={styles.closebut} onClick={onClose}>
         关闭
       </div>
     </div>
   );
 });
 
-export const BasicModal: React.FC<Props> = React.memo(props => {
+const TextBut: React.FC<TextProps> = React.memo((props) => {
+  const { textName = "确认", onTextClick } = props;
+  return (
+    <div className={styles.textButBody}>
+      <div className={styles.textNameClass} onClick={onTextClick}>
+        {textName}
+      </div>
+    </div>
+  );
+});
+
+export const BasicModal: React.FC<Props> = React.memo((props) => {
   const {
     onOk,
     onCancel,
@@ -60,26 +69,27 @@ export const BasicModal: React.FC<Props> = React.memo(props => {
     leftName,
     rightName,
     showFooter = true,
-    showClose = false
+    showClose = false,
+    showTextButton = false,
+    onTextClick,
+    textName,
   } = props;
   return (
-    <div className={styles.container}>
-      <div className={styles.body}>
-        <div className={styles.content}>
-          {icon ? <img className={styles.img} src={icon}></img> : null}
-          {children}
-        </div>
-        {showClose ? <CloseBut onCancel={onClose}></CloseBut> : null}
-
-        {showFooter ? (
-          <ButtonGrop
-            onCancel={onCancel}
-            onOk={onOk}
-            leftName={leftName}
-            rightName={rightName}
-          ></ButtonGrop>
-        ) : null}
-      </div>
+    <div className={styles.content}>
+      {icon ? <img className={styles.img} src={icon}></img> : null}
+      {children}
+      {showClose ? <CloseBut onClose={onClose}></CloseBut> : null}
+      {showTextButton ? (
+        <TextBut onTextClick={onTextClick} textName={textName}></TextBut>
+      ) : null}
+      {showFooter ? (
+        <ButtonGrop
+          onCancel={onCancel}
+          onOk={onOk}
+          leftName={leftName}
+          rightName={rightName}
+        ></ButtonGrop>
+      ) : null}
     </div>
   );
 });

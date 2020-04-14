@@ -176,6 +176,9 @@ export const View: React.FC<Props> = React.memo((props) => {
         return undefined;
       }
     } else {
+      if(height){
+        return undefined
+      }
       return 1;
     }
   })();

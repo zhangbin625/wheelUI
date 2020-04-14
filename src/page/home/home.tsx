@@ -39,6 +39,12 @@ import { PickCard } from "../../business_components/outline/pick-card";
 import { PickListDetails } from "../../business_components/outline/pick-list-details";
 import { DiscountModal } from "../../business_components/outline/discount-modal";
 import { Container } from "../../components/container";
+import { TaskTipModal } from "../../business_components/outline/task-tip-modal";
+import { ConfirmCancelModal } from "../../business_components/outline/confirm-cancel-modal";
+import { PriceTagBinding } from "../../business_components/outline/price-tag-binding";
+import { PriceTagDeregulation } from "../../business_components/outline/price-tag-deregulation";
+import { PriceTagButton } from "../../components/price-tag";
+
 interface Props extends iStateProps, iDispatchProps {}
 interface State {
   value: string | number;
@@ -71,7 +77,7 @@ export class Home extends PureComponent<Props> {
     }),
   };
   private pullDown = () => {
-    console.log('pullDown')
+    console.log("pullDown");
     this.setState({ downFlag: true });
     setTimeout(() => {
       console.log(2);
@@ -81,7 +87,7 @@ export class Home extends PureComponent<Props> {
   };
 
   private pullUp = () => {
-    console.log('pullUp')
+    console.log("pullUp");
     this.setState({ flag: true });
     setTimeout(() => {
       const { list } = this.state;
@@ -205,7 +211,7 @@ export class Home extends PureComponent<Props> {
               ></Selectlist> */}
         {/* <ScanningList top={20} onClick={() => alert(123)}></ScanningList> */}
 
-        <Wrap reduceHeight={14}  paddingBottom={40}>
+        {/* <Wrap reduceHeight={14} paddingBottom={40}>
           <Scroll
             pullDownLoading={this.state.downFlag}
             pullDown={this.pullDown}
@@ -226,7 +232,7 @@ export class Home extends PureComponent<Props> {
               ></PickCard>
             ))}
           </Scroll>
-        </Wrap>
+        </Wrap> */}
         {/* <PickListDetails
           top={30}
           transferredDepartment="水果"
@@ -234,7 +240,43 @@ export class Home extends PureComponent<Props> {
           creationTime="2017.09.14 10:40:32"
           creator="卡卡西"
         ></PickListDetails> */}
+        {/* <PriceTagBinding onClick={() => alert("bangding")}></PriceTagBinding> */}
+        {/* <PriceTagDeregulation
+          top={30}
+          onClick={() => alert("unbangding")}
+        ></PriceTagDeregulation> */}
+          <PriceTagButton top={100} type='bind'></PriceTagButton>
+        <PriceTagButton top={50} type='unbind'></PriceTagButton>
+        <TaskTipModal
+          onClose={() => {
+            alert("关闭");
+          }}
+          onTextClick={() => {
+            alert("确定");
+          }}
+          visible={false}
+          promptInformation="当前任务还未处理完
+请返回继续处理。"
+          textName="取消"
+        ></TaskTipModal>
 
+        <ConfirmCancelModal
+          visible={false}
+          onCancel={() => alert("取消")}
+          onOk={() => alert("确定")}
+          onClose={() => alert("关闭")}
+          promptInformation="拣货任务已全部拣完，请打包"
+        ></ConfirmCancelModal>
+
+        <ConfirmCancelModal
+          visible={false}
+          leftName="取消"
+          rightName="替换"
+          onCancel={() => alert("取消")}
+          onOk={() => alert("替换")}
+          onClose={() => alert("关闭")}
+          promptInformation="拣货任务已全部拣完，请打包"
+        ></ConfirmCancelModal>
         {/* <DiscountModal
           onClose={() => this.setState({ flag: false })}
           visible={this.state.flag}
