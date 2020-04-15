@@ -44,6 +44,10 @@ import { ConfirmCancelModal } from "../../business_components/outline/confirm-ca
 import { PriceTagBinding } from "../../business_components/outline/price-tag-binding";
 import { PriceTagDeregulation } from "../../business_components/outline/price-tag-deregulation";
 import { PriceTagButton } from "../../components/price-tag";
+import { ScanGoods } from "../../business_components/outline/scan-goods";
+import { PickListDetailsImage } from "../../business_components/outline/pick-list-details-image";
+import { CheckboxPickCard } from "../../business_components/outline/checkbox-pick-card";
+import { RadioGroup, Radio } from "../../components/radio-group";
 
 interface Props extends iStateProps, iDispatchProps {}
 interface State {
@@ -240,13 +244,69 @@ export class Home extends PureComponent<Props> {
           creationTime="2017.09.14 10:40:32"
           creator="卡卡西"
         ></PickListDetails> */}
-        {/* <PriceTagBinding onClick={() => alert("bangding")}></PriceTagBinding> */}
+        {/* <PriceTagBinding
+          top={100}
+          onClick={() => alert("bangding")}
+        ></PriceTagBinding>
         <PriceTagDeregulation
-          top={30}
+          top={50}
           onClick={() => alert("unbangding")}
-        ></PriceTagDeregulation>
+        ></PriceTagDeregulation> */}
+        {/* <LongButton top={20} disabled onClick={() => alert("du")}>
+          确认保存
+        </LongButton>
+        <LongButton top={20} type="primary" disabled>
+          确认保存
+        </LongButton>
+        <LongButton top={20}>确认保存</LongButton>
+        <LongButton top={20} type="primary">
+          确认保存
+        </LongButton>
+        <ScanGoods></ScanGoods> */}
+        <RadioGroup
+          value={this.state.value1}
+          onChange={(value1) => this.setState({ value1 })}
+        >
+          <CheckboxPickCard
+            top={30}
+            bottom={30}
+            onClick={() => alert(`领料单卡片`)}
+            transferredDepartment="水果"
+            transferDepartment="餐饮-咖啡饮品"
+            materialNumber={20}
+            creationTime="2017.09.14 10:40:32"
+            creator="卡卡西"
+          >
+            <Radio value={1}></Radio>
+          </CheckboxPickCard>
+
+          <CheckboxPickCard
+            top={30}
+            bottom={30}
+            onClick={() => alert(`领料单卡片`)}
+            transferredDepartment="水果"
+            transferDepartment="餐饮-咖啡饮品"
+            materialNumber={20}
+            creationTime="2017.09.14 10:40:32"
+            creator="卡卡西"
+          >
+            <Radio value={2}></Radio>
+          </CheckboxPickCard>
+        </RadioGroup>
+
+        <PickListDetailsImage
+          imageurl={dll}
+          top={40}
+          goodsName="八享时新疆皮核桃八享时新疆皮核桃八享
+时新疆皮核桃"
+          goodsBarCode="01011011"
+          availableStock="20"
+          discountInformation="1.0"
+          quantityMaterials="20"
+        ></PickListDetailsImage>
+
         {/* <PriceTagButton top={100} type="bind"></PriceTagButton> */}
-        <PriceTagButton top={50} type="unbind"></PriceTagButton>
+        {/* <PriceTagButton top={50} type="unbind"></PriceTagButton> */}
         <TaskTipModal
           onClose={() => {
             alert("关闭");

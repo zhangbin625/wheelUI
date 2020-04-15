@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "../../components/view";
 import binding from "./bingding.svg";
+import bangding from "./banding.svg";
 import { Image } from "../../components/image";
 
 interface Props {
@@ -13,7 +14,7 @@ const PriceTagBinding: React.FC<Props> = React.memo((props) => {
   const { onClick, ...prop } = props;
   return (
     <View {...prop} height={278} align="center" alignItem="center">
-      <Image onClick={onClick} url={binding} height={278} width={278}></Image>
+      <Image onClick={onClick} url={bangding} height={278} width={278}></Image>
     </View>
   );
 });
