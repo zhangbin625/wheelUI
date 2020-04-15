@@ -136,7 +136,7 @@ export class Home extends PureComponent<Props> {
           }}
         >
           <Text color="#1D1F2B" size={32}>
-            场间移动
+            标题
           </Text>
         </Header>
         {/* <Slider bannerList={this.state.bannerList}></Slider> */}
